@@ -20,7 +20,8 @@ class Logo extends Phaser.Scene{
         super('logo')
     }
     preload(){
-        this.load.image('catLogo', "/assets/catSnuggleLogo.jpg")
+        this.load.image('catLogo', "/assets/catSnuggleLogo-b.png")
+        this.load.image('LogoType', "/assets/catsnugstudio.png")
         this.load.audio('catPurr', "/assets/Purr_10.mp3")
     }
     create(){     
@@ -30,6 +31,8 @@ class Logo extends Phaser.Scene{
         this.cameras.main.fadeIn(5000,0,0,0);
         let logoBG = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'catLogo')
         logoBG.setScale(.5).setScrollFactor(0)
+        let logoType = this.add.image(700,500, 'LogoType');
+        logoType.setScale(.35);
         this.time.delayedCall(5000, () => {
             this.cameras.main.fadeOut(5000,0,0,0);
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {this.scene.start('info')})
@@ -152,11 +155,12 @@ class gameInfo extends Phaser.Scene{
     })
     this.time.delayedCall(8000, () => {
         this.cameras.main.fadeOut(3000,0,0,0);
-        this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {this.scene.start('start')})
+        this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {this.scene.start('start', { audio: bgmLoop })})
     })
 }
 
 }
+
 class startMenu extends Phaser.Scene{
     constructor(){
         super('start')
@@ -170,21 +174,60 @@ class startMenu extends Phaser.Scene{
         this.load.image('bubba', "/assets/bubbarelax.png")
         this.load.image('thought',"/assets/thoughtbubble.png")
     }
-    create(){
+    create(data){
         this.cameras.main.setBackgroundColor(0xfcccef);
-        let menuBorder = this.add.rectangle(200,430, 350, 400, ' 0x000000');
-        let menuInner = this.add.rectangle(200,430, 345, 395, ' 0xffffff');
+        let bgmLoop = data;
+        let menuBorder = this.add.rectangle(-300,430, 350, 400, ' 0x000000');
+        let menuInner = this.add.rectangle(-300,430, 345, 395, ' 0xffffff');
         //Use tween to move to offset 200,430
-        let playGameButton = this.add.text(40,260, "Start Stacking!", {
+        let playGameButton = this.add.text(-300,260, "Start Stacking!", {
 			fontFamily: 'SunnySpells',
-			fontSize: '48px',
-			color: '#7ff1f5'})
-            playGameButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
-            playGameButton.inputEnabled = true;
-            playGameButton.once('pointerdown',() => {
-                console.log("Test");
-            });
-      
+			fontSize: '52px',
+			color: '#7ff1f5'}).setInteractive()
+            .on('pointerup', () => {this.scene.start('playscreen'); } )
+            .on('pointerover', () => playGameButton.setStyle({ fill: '#1a3dc9'}) )
+            .on('pointerout', () => playGameButton.setStyle({ fill: '#7ff1f5' }) );
+        playGameButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
+
+        let optionsButton = this.add.text(-300, 340, "Options", {
+            fontFamily: 'SunnySpells',
+            fontSize: '52px',
+            color: '#7ff1f5'
+        }).setInteractive()
+            .on('pointerup', () => {this.scene.start('options');} )
+            .on('pointerover', () => optionsButton.setStyle({ fill: '#1a3dc9'}) )
+            .on('pointerout', () => optionsButton.setStyle({ fill: '#7ff1f5' }) );
+        optionsButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
+
+
+        
+        let creditsButton = this.add.text(-300, 420, "Credits", {
+            fontFamily: 'SunnySpells',
+            fontSize: '52px',
+            color: '#7ff1f5'
+        }).setInteractive()
+            .on('pointerup', () => this.scene.start('credits') )
+            .on('pointerover', () => creditsButton.setStyle({ fill: '#1a3dc9'}) )
+            .on('pointerout', () => creditsButton.setStyle({ fill: '#7ff1f5' }) );
+        creditsButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
+  
+   
+
+        let quitButton = this.add.text(-300, 500, "Quit", {
+            fontFamily: 'SunnySpells',
+            fontSize: '52px',
+            color: '#7ff1f5'
+        }).setInteractive()
+            .on('pointerup', () => {this.scene.start('intro'); data.audio.stop();} )
+            .on('pointerover', () => quitButton.setStyle({ fill: '#1a3dc9'}) )
+            .on('pointerout', () => quitButton.setStyle({ fill: '#7ff1f5' }) );
+        quitButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
+
+
+
+
+        
+
         let cuppy = this.add.sprite(1000,575, 'cupcake')
         cuppy.setScale(.3);
         cuppy.angle = -25;
@@ -243,17 +286,97 @@ class startMenu extends Phaser.Scene{
 
         })
         this.time.delayedCall(600, () =>{
-
+            this.add.tween({
+                targets: playGameButton,
+                x: 40,
+                ease: 'power3',
+                duration: 500,
+            })
+            this.add.tween({
+                targets: optionsButton,
+                x: 40,
+                ease: 'power3',
+                duration: 500,
+            })
+            this.add.tween({
+                targets: creditsButton,
+                x: 40,
+                ease: 'power3',
+                duration: 500,
+            })
+            this.add.tween({
+                targets: quitButton,
+                x: 40,
+                ease: 'power3',
+                duration: 500,
+            })
+            this.add.tween({
+                targets: menuBorder,
+                x: 200,
+                ease: 'power3',
+                duration: 500,
+            })
+            this.add.tween({
+                targets: menuInner,
+                x: 200,
+                ease: 'power3',
+                duration: 500,
+            })
         })
-        
-   
     }
 
 }
+class playScreen extends Phaser.Scene{
+    constructor(){
+        super('playscreen')
+    }
+    create(){
+        let toStartButton = this.add.text(300,360, "No Game yet Sorry", {fontFamily: 'SunnySpells',
+        fontSize: '84px',
+        color: '#7ff1f5'}).setInteractive()
+        .on('pointerup', () => {this.scene.start('start');} )
+        .on('pointerover', () => toStartButton.setStyle({ fill: '#1a3dc9'}) )
+        .on('pointerout', () => toStartButton.setStyle({ fill: '#7ff1f5' }) );
+    toStartButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);;
+    }
+}
+
+class Credits extends Phaser.Scene{
+    constructor(){
+        super('credits')
+    }
+    create(){
+        let toStartButton = this.add.text(100,160, "Assets: \n Photos of my cats edited with Krita\n Audio: My cats purring edited with Audacity and a sample taken with audacity from: \n Andrew Applepie - For Mum", {fontFamily: 'SunnySpells',
+        fontSize: '48px',
+        color: '#7ff1f5'}).setInteractive()
+        .on('pointerup', () => {this.scene.start('start');} )
+        .on('pointerover', () => toStartButton.setStyle({ fill: '#1a3dc9'}) )
+        .on('pointerout', () => toStartButton.setStyle({ fill: '#7ff1f5' }) );
+    toStartButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
+    toStartButton.setWordWrapWidth(1000);
+    }
+}
+
+class Options extends Phaser.Scene{
+    constructor(){
+        super('options')
+    }
+    create(){
+        let toStartButton = this.add.text(300,360, "No Game yet Sorry", {fontFamily: 'SunnySpells',
+        fontSize: '84px',
+        color: '#7ff1f5'}).setInteractive()
+        .on('pointerup', () => {this.scene.start('start');} )
+        .on('pointerover', () => toStartButton.setStyle({ fill: '#1a3dc9'}) )
+        .on('pointerout', () => toStartButton.setStyle({ fill: '#7ff1f5' }) );
+    toStartButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);;
+    }
+}
+
+
+
 new Phaser.Game({
     width: 1280,
     height: 720,
-    //scene:[Intro,Logo,gameInfo,startMenu],
-    scene:[startMenu],
-
+    scene:[Intro,Logo,gameInfo,startMenu,playScreen,Credits,Options],
+    
 });
