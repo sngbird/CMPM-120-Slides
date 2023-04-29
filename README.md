@@ -10,3 +10,5 @@ Key Rquirements:
 * 1+ multi-line text - the writing in the game information scene
 * 1+ Fading animation - most of the scenes fade into eachother.
 * 1+ object motion animation - in the game intro scene the cats move into a stack, and in the start menu the thought bubbles appear and then the start menu slides from the left of the screen
+
+TODO: figure out how to get around chrome's automute thing
