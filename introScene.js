@@ -177,10 +177,10 @@ class startMenu extends Phaser.Scene{
     create(data){
         this.cameras.main.setBackgroundColor(0xfcccef);
         let bgmLoop = data;
-        let menuBorder = this.add.rectangle(-300,430, 350, 400, ' 0x000000');
-        let menuInner = this.add.rectangle(-300,430, 345, 395, ' 0xffffff');
+        let menuBorder = this.add.rectangle(-500,430, 350, 400, ' 0x000000');
+        let menuInner = this.add.rectangle(-500,430, 345, 395, ' 0xffffff');
         //Use tween to move to offset 200,430
-        let playGameButton = this.add.text(-300,260, "Start Stacking!", {
+        let playGameButton = this.add.text(-500,260, "Start Stacking!", {
 			fontFamily: 'SunnySpells',
 			fontSize: '52px',
 			color: '#7ff1f5'}).setInteractive()
@@ -189,7 +189,7 @@ class startMenu extends Phaser.Scene{
             .on('pointerout', () => playGameButton.setStyle({ fill: '#7ff1f5' }) );
         playGameButton.setShadow(3, 3, 'rgba(0,0,0,0.8)', 5);
 
-        let optionsButton = this.add.text(-300, 340, "Options", {
+        let optionsButton = this.add.text(-500, 340, "Options", {
             fontFamily: 'SunnySpells',
             fontSize: '52px',
             color: '#7ff1f5'
@@ -201,7 +201,7 @@ class startMenu extends Phaser.Scene{
 
 
         
-        let creditsButton = this.add.text(-300, 420, "Credits", {
+        let creditsButton = this.add.text(-500, 420, "Credits", {
             fontFamily: 'SunnySpells',
             fontSize: '52px',
             color: '#7ff1f5'
@@ -213,7 +213,7 @@ class startMenu extends Phaser.Scene{
   
    
 
-        let quitButton = this.add.text(-300, 500, "Quit", {
+        let quitButton = this.add.text(-500, 500, "Quit", {
             fontFamily: 'SunnySpells',
             fontSize: '52px',
             color: '#7ff1f5'
