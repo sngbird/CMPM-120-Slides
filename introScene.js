@@ -20,7 +20,7 @@ class Logo extends Phaser.Scene{
         super('logo')
     }
     preload(){
-        this.load.image('catLogo', "assets/CatSnuggleLogo-b.png")
+        this.load.image('catLogo', "assets/CatSnuggleLogo.png")
         this.load.image('LogoType', "assets/catsnugstudio.png")
         this.load.audio('catPurr', "assets/Purr_10.mp3")
     }
