@@ -46,7 +46,7 @@ class gameInfo extends Phaser.Scene{
         super('info')
     }
     preload(){
-        this.load.audio('kittyLoop', "assets/kittyLoop.mp3")
+        this.load.audio('kittyLoop', "assets/kittyloop.mp3")
         this.load.image('cupcake', "assets/cupcake.png")
         this.load.image('tuppy', "assets/tuppy.png")
         this.load.image('anala', "assets/gnawla.png")
