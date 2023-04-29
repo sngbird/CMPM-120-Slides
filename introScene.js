@@ -20,7 +20,7 @@ class Logo extends Phaser.Scene{
         super('logo')
     }
     preload(){
-        this.load.image('catLogo', "assets/CatSnuggleLogo.png")
+        this.load.image('catLogo', "assets/catsnuggleLogo.png")
         this.load.image('LogoType', "assets/catsnugstudio.png")
         this.load.audio('catPurr', "assets/Purr_10.mp3")
     }
@@ -49,7 +49,7 @@ class gameInfo extends Phaser.Scene{
         this.load.image('cupcake', "assets/Cupcake.png")
         this.load.image('tuppy', "assets/Tuppy.png")
         this.load.image('anala', "assets/gnawla.png")
-        this.load.image('beebo', "assets/Beebo.png")
+        this.load.image('beebo', "assets/beebo.png")
         this.load.image('bubba', "assets/bubbarelax.png")
     }
     create(){
@@ -170,7 +170,7 @@ class startMenu extends Phaser.Scene{
         this.load.image('cupcake', "assets/Cupcake.png")
         this.load.image('tuppy', "assets/Tuppy.png")
         this.load.image('anala', "assets/gnawla.png")
-        this.load.image('beebo', "assets/Beebo.png")
+        this.load.image('beebo', "assets/beebo.png")
         this.load.image('bubba', "assets/bubbarelax.png")
         this.load.image('thought',"assets/thoughtbubble.png")
     }
