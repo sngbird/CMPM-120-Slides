@@ -4,7 +4,7 @@ class Intro extends Phaser.Scene{
         super('intro')
     }
     preload(){
-        this.load.image('playButton', "/assets/playButton.jpg")
+        this.load.image('playButton', "assets/playButton.jpg")
     }
     create(){
         this.add.text(550,650,"Click to begin.");
@@ -20,9 +20,9 @@ class Logo extends Phaser.Scene{
         super('logo')
     }
     preload(){
-        this.load.image('catLogo', "/assets/catSnuggleLogo-b.png")
-        this.load.image('LogoType', "/assets/catsnugstudio.png")
-        this.load.audio('catPurr', "/assets/Purr_10.mp3")
+        this.load.image('catLogo', "assets/catSnuggleLogo-b.png")
+        this.load.image('LogoType', "assets/catsnugstudio.png")
+        this.load.audio('catPurr', "assets/Purr_10.mp3")
     }
     create(){     
       
@@ -45,12 +45,12 @@ class gameInfo extends Phaser.Scene{
         super('info')
     }
     preload(){
-        this.load.audio('kittyLoop', "/assets/kittyLoop.mp3")
-        this.load.image('cupcake', "/assets/Cupcake.png")
-        this.load.image('tuppy', "/assets/Tuppy.png")
-        this.load.image('anala', "/assets/gnawla.png")
-        this.load.image('beebo', "/assets/beebo.png")
-        this.load.image('bubba', "/assets/bubbarelax.png")
+        this.load.audio('kittyLoop', "assets/kittyLoop.mp3")
+        this.load.image('cupcake', "assets/Cupcake.png")
+        this.load.image('tuppy', "assets/Tuppy.png")
+        this.load.image('anala', "assets/gnawla.png")
+        this.load.image('beebo', "assets/beebo.png")
+        this.load.image('bubba', "assets/bubbarelax.png")
     }
     create(){
         let titleText = this.add.text(400,25, "Kitty Krash", {
@@ -166,13 +166,13 @@ class startMenu extends Phaser.Scene{
         super('start')
     }
     preload(){
-        this.load.audio('kittyLoop', "/assets/kittyLoop.mp3")
-        this.load.image('cupcake', "/assets/Cupcake.png")
-        this.load.image('tuppy', "/assets/Tuppy.png")
-        this.load.image('anala', "/assets/gnawla.png")
-        this.load.image('beebo', "/assets/beebo.png")
-        this.load.image('bubba', "/assets/bubbarelax.png")
-        this.load.image('thought',"/assets/thoughtbubble.png")
+        this.load.audio('kittyLoop', "assets/kittyLoop.mp3")
+        this.load.image('cupcake', "assets/Cupcake.png")
+        this.load.image('tuppy', "assets/Tuppy.png")
+        this.load.image('anala', "assets/gnawla.png")
+        this.load.image('beebo', "assets/beebo.png")
+        this.load.image('bubba', "assets/bubbarelax.png")
+        this.load.image('thought',"assets/thoughtbubble.png")
     }
     create(data){
         this.cameras.main.setBackgroundColor(0xfcccef);
